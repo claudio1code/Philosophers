@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 13:58:45 by clados-s          #+#    #+#             */
-/*   Updated: 2025/11/24 15:07:24 by clados-s         ###   ########.fr       */
+/*   Updated: 2025/11/24 17:29:08 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_atoi(const char *nptr)
 			return (-2147483648);
 		if (sign == 1 && n >= 2147483647)
 			return (2147483647);
-		*nptr++;
+		nptr++;
 	}
 	return (n * sign);
 }
@@ -55,7 +55,7 @@ void parse_arguments(int argc, char **argv, t_data *data)
 	data->time_to_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
 	{
-		meals_required = ft_atoi(argv[4]);
+		meals_required = ft_atoi(argv[5]);
 		if (meals_required <= 0)
 		{
 			printf("Error: Number of meals must be positive.\n");

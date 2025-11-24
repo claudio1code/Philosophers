@@ -1,13 +1,14 @@
 NAME = philo
 
 CC = cc
-CFLAGS = -Wall -Werror - Wextra -pthread -g3
+CFLAGS = -Wall -Werror -Wextra -pthread -g3
 
 SRCS_DIR = srcs/
 OBJS_DIR = objs/
 INCLUDES = -I includes/
 
-SRCS_LIST = 
+SRCS_LIST = parsing.c \
+			pthread.c
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_LIST))
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS_LIST:.c=.o))
