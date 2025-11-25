@@ -2,6 +2,7 @@
 *.d
 *.pdf
 f.c
+others/
 
 # Object files
 *.o
