@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: clados-s <your@mail.com>                   +#+  +:+       +#+         #
+#    By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/24 18:04:57 by clados-s          #+#    #+#              #
-#    Updated: 2025/11/24 18:06:40 by clados-s         ###   ########.fr        #
+#    Updated: 2025/11/26 14:19:21 by clados-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ OBJS_DIR = objs/
 INCLUDES = -I includes/
 
 SRCS_LIST = parsing.c \
-			pthread.c
+			pthread.c \
+			utils.c
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_LIST))
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS_LIST:.c=.o))
@@ -34,7 +35,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo -n "$(YELLOW)A linkar $(NAME)... $(DEF_COLOR)"
-	@sh -c '(while kill -0 $$PPID 2>dev/null; do \
+	@sh -c '(while kill -0 $$PPID 2>/dev/null; do \
 		echo -n "\b|"; sleep 0.05; \
 		echo -n "\b/"; sleep 0.05; \
 		echo -n "\b-"; sleep 0.05; \
@@ -47,7 +48,7 @@ $(NAME): $(OBJS)
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR)
 	@echo -n "$(CYAN)A compilar $<... $(DEF_COLOR)"
-	@sh -c '(while kill -0 $$PPID 2>dev/null; do \
+	@sh -c '(while kill -0 $$PPID 2>/dev/null; do \
 		echo -n "\b|"; sleep 0.05; \
 		echo -n "\b/"; sleep 0.05; \
 		echo -n "\b-"; sleep 0.05; \

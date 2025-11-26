@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 13:58:45 by clados-s          #+#    #+#             */
-/*   Updated: 2025/11/25 15:22:02 by clados-s         ###   ########.fr       */
+/*   Updated: 2025/11/26 11:49:58 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	parse_arguments(int argc, char **argv, t_data *data)
 		data->eat_count_max = ft_atou(argv[5]);
 	else
 		data->eat_count_max = 0;
-	if (data->num_philos < 1 || data->time_to_die < 1 || data->time_to_eat
+	if (data->num_philos < 1 || data->time_to_die < 1 || data->time_to_eat < 1
 		|| data->time_to_sleep < 1)
 	{
 		printf("Error: All parameters must be greater than one.");
