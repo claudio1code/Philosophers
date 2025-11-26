@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 15:35:45 by clados-s          #+#    #+#             */
-/*   Updated: 2025/11/25 14:56:03 by clados-s         ###   ########.fr       */
+/*   Updated: 2025/11/26 11:45:30 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ int	init_global_data(t_data *data)
 
 int	main(int argc, char **argv)
 {
+	t_data	s;
+
 
 }
