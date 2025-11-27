@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 11:36:00 by clados-s          #+#    #+#             */
-/*   Updated: 2025/11/26 14:13:53 by clados-s         ###   ########.fr       */
+/*   Updated: 2025/11/27 11:01:24 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,8 @@ typedef struct s_philo
 int			parse_arguments(int argc, char **argv, t_data *data);
 long long	get_time(void);
 int			main(int argc, char **argv);
+void		print_action(t_philo *philo, char *str);
+void		philo_eat(t_philo *philo);
+void		*philo_routine(void *arg);
 
 #endif
