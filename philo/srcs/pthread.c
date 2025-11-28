@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 15:35:45 by clados-s          #+#    #+#             */
-/*   Updated: 2025/11/28 13:47:20 by clados-s         ###   ########.fr       */
+/*   Updated: 2025/11/28 15:36:50 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	monitor_simulation(t_data *data, t_philo *philos)
 			pthread_mutex_lock(&philos[i].philo_lock);
 			if (get_time() - philos[i].last_meal_time > data->time_to_die)
 			{
-				print_action(philos, "died 💀");
+				print_action(&philos[i], "died 💀");
 				pthread_mutex_lock(&data->monitor_lock);
 				data->stop_simulation = 1;
 				pthread_mutex_unlock(&data->monitor_lock);

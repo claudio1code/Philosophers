@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:37:53 by clados-s          #+#    #+#             */
-/*   Updated: 2025/11/27 11:07:11 by clados-s         ###   ########.fr       */
+/*   Updated: 2025/11/28 14:02:05 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	philo_eat(t_philo *philo)
 
 	which_philo(philo, &first_fork, &second_fork);
 	pthread_mutex_lock(first_fork);
-	print_action(philo, "has taken a fork🍴");
+	print_action(philo, "has taken a fork 🍴");
 	if (philo->data->num_philos == 1)
 	{
 		usleep(philo->data->time_to_die * 1000);
@@ -41,12 +41,12 @@ void	philo_eat(t_philo *philo)
 		return ;
 	}
 	pthread_mutex_lock(second_fork);
-	print_action(philo, "has taken a fork🍴");
+	print_action(philo, "has taken a fork 🍴");
 	pthread_mutex_lock(&philo->philo_lock);
 	philo->last_meal_time = get_time();
 	philo->meals_eaten++;
 	pthread_mutex_unlock(&philo->philo_lock);
-	print_action(philo, "is eating 💭");
+	print_action(philo, "is eating 🍝");
 	usleep(philo->data->time_to_eat * 1000);
 	pthread_mutex_unlock(second_fork);
 	pthread_mutex_unlock(first_fork);
@@ -71,7 +71,7 @@ void	*philo_routine(void *arg)
 		philo_eat(philo);
 		print_action(philo, "is sleeping 💤");
 		usleep(philo->data->time_to_sleep * 1000);
-		print_action(philo, "is thinking💭");
+		print_action(philo, "is thinking 💭");
 	}
 	return (NULL);
 }
