@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 15:35:45 by clados-s          #+#    #+#             */
-/*   Updated: 2025/11/28 13:33:31 by clados-s         ###   ########.fr       */
+/*   Updated: 2025/11/28 13:47:20 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,13 +108,14 @@ int	main(int argc, char **argv)
 
 	if (parse_arguments(argc, argv, &data))
 		return (1);
+	if (init_global_data(&data))
+		return (free_error(&data));
 	if (init_philosophers(&philos, &data))
 	{
 		printf("Error: Falied to initialize philosophers.\n");
+		free(data.forks);
 		return (free_error(&philos));
 	}
-	if (init_global_data(&data))
-		return (free_error(&data));
 	if (start_simulation(&data, philos))
 		return (1);
 	monitor_simulation(&data, philos);
@@ -124,11 +125,5 @@ int	main(int argc, char **argv)
 		pthread_join(philos[i].thread_id, NULL);
 		i++;
 	}
-	printf("Sucesso! %d filósofos inicializados.\n", data.num_philos);
-	printf("Filósofo 1: Garfo Esq %p, Garfo Dir %p\n",
-		(void *)philos[0].left_fork, (void *)philos[0].right_fork);
-	printf("Último Filósofo: Garfo Esq %p, Garfo Dir %p\n",
-		(void *)philos[data.num_philos - 1].left_fork,
-		(void *)philos[data.num_philos - 1].right_fork);
 	return (0);
 }
