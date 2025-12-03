@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 13:58:45 by clados-s          #+#    #+#             */
-/*   Updated: 2025/11/28 13:56:14 by clados-s         ###   ########.fr       */
+/*   Updated: 2025/12/03 10:34:53 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,19 @@ static int	valid_argument(int argc, char **argv)
 	return (0);
 }
 
+static void	value_to_var(int argc, char **argv, t_data *data)
+{
+	data->num_philos = ft_atou(argv[1]);
+	data->time_to_die = ft_atou(argv[2]);
+	data->time_to_eat = ft_atou(argv[3]);
+	data->time_to_sleep = ft_atou(argv[4]);
+	data->stop_simulation = 0;
+	if (argc == 6)
+		data->eat_count_max = ft_atou(argv[5]);
+	else
+		data->eat_count_max = 0;
+}
+
 int	parse_arguments(int argc, char **argv, t_data *data)
 {
 	if (argc < 5 || argc > 6)
@@ -63,15 +76,7 @@ int	parse_arguments(int argc, char **argv, t_data *data)
 		printf("Error: Ivalid arguments");
 		return (1);
 	}
-	data->num_philos = ft_atou(argv[1]);
-	data->time_to_die = ft_atou(argv[2]);
-	data->time_to_eat = ft_atou(argv[3]);
-	data->time_to_sleep = ft_atou(argv[4]);
-	data->stop_simulation = 0;
-	if (argc == 6)
-		data->eat_count_max = ft_atou(argv[5]);
-	else
-		data->eat_count_max = 0;
+	value_to_var(argc, argv, data);
 	if (data->num_philos < 1 || data->time_to_die < 1 || data->time_to_eat < 1
 		|| data->time_to_sleep < 1)
 	{
@@ -80,3 +85,4 @@ int	parse_arguments(int argc, char **argv, t_data *data)
 	}
 	return (0);
 }
+

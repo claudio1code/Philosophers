@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 11:36:00 by clados-s          #+#    #+#             */
-/*   Updated: 2025/11/28 13:28:13 by clados-s         ###   ########.fr       */
+/*   Updated: 2025/12/03 10:37:08 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ int			parse_arguments(int argc, char **argv, t_data *data);
 long long	get_time(void);
 int			main(int argc, char **argv);
 void		print_action(t_philo *philo, char *str);
-void		philo_eat(t_philo *philo);
-void		*philo_routine(void *arg);
 int			free_error(void *arg);
 
 #endif

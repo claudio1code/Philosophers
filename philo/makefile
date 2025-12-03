@@ -6,7 +6,7 @@
 #    By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/24 18:04:57 by clados-s          #+#    #+#              #
-#    Updated: 2025/11/27 11:01:42 by clados-s         ###   ########.fr        #
+#    Updated: 2025/12/03 10:49:10 by clados-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,8 @@ OBJS_DIR = objs/
 INCLUDES = -I includes/
 
 SRCS_LIST = parsing.c \
-			pthread.c \
 			utils.c \
-			routine.c
+			main.c
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_LIST))
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS_LIST:.c=.o))
