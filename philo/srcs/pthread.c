@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 15:35:45 by clados-s          #+#    #+#             */
-/*   Updated: 2025/11/28 16:55:12 by clados-s         ###   ########.fr       */
+/*   Updated: 2025/12/02 13:23:22 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	start_simulation(t_data *data, t_philo *philos)
 void	monitor_simulation(t_data *data, t_philo *philos)
 {
 	int			i;
-	long long	atraso;
+	// long long	atraso;
 
 	while (1)
 	{
@@ -92,8 +92,8 @@ void	monitor_simulation(t_data *data, t_philo *philos)
 				data->stop_simulation = 1;
 				pthread_mutex_unlock(&data->monitor_lock);
 				pthread_mutex_unlock(&philos[i].philo_lock);
-				atraso = get_time() - philos[i].last_meal_time - data->time_to_die;
-				printf("DEBUG: Atraso de %lld ms\n", atraso);
+				// atraso = get_time() - philos[i].last_meal_time - data->time_to_die;
+				// printf("DEBUG: Atraso de %lld ms\n", atraso);
 				return ;
 			}
 			pthread_mutex_unlock(&philos[i].philo_lock);

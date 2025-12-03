@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:37:53 by clados-s          #+#    #+#             */
-/*   Updated: 2025/11/28 16:36:23 by clados-s         ###   ########.fr       */
+/*   Updated: 2025/12/03 10:05:35 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	philo_eat(t_philo *philo)
 	pthread_mutex_lock(&philo->philo_lock);
 	philo->last_meal_time = get_time();
 	philo->meals_eaten++;
-	print_action(philo, "is eating 🍝");
+	print_action(philo, "is eating 🍝");gi
 	usleep(philo->data->time_to_eat * 1000);
 	pthread_mutex_unlock(&philo->philo_lock);
 	pthread_mutex_unlock(second_fork);
