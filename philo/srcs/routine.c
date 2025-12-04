@@ -26,6 +26,12 @@ static void	which_philo(t_philo *p, pthread_mutex_t **f, pthread_mutex_t **s)
 	}
 }
 
+static void	handle_one_philosopher(t_philo *philo, pthread_mutex_t *fork)
+{
+	usleep(philo->data->time_to_die * 1000);
+	pthread_mutex_unlock(fork);
+}
+
 void	philo_eat(t_philo *philo)
 {
 	pthread_mutex_t	*first_fork;
@@ -36,8 +42,7 @@ void	philo_eat(t_philo *philo)
 	print_action(philo, "has taken a fork 🍴");
 	if (philo->data->num_philos == 1)
 	{
-		usleep(philo->data->time_to_die * 1000);
-		pthread_mutex_unlock(first_fork);
+		handle_one_philosopher(philo, first_fork);
 		return ;
 	}
 	pthread_mutex_lock(second_fork);

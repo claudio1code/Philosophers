@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 11:36:00 by clados-s          #+#    #+#             */
-/*   Updated: 2025/11/28 13:28:13 by clados-s         ###   ########.fr       */
+/*   Updated: 2025/12/04 17:27:32 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ int			main(int argc, char **argv);
 void		print_action(t_philo *philo, char *str);
 void		philo_eat(t_philo *philo);
 void		*philo_routine(void *arg);
-int			free_error(void *arg);
+void		cleanup(t_data *data, t_philo *philos);
+int			init_global_data(t_data *data);
+int			init_philosophers(t_philo **philos, t_data *data);
+int			start_simulation(t_data *data, t_philo *philos);
+void		monitor_simulation(t_data *data, t_philo *philos);
+
 
 #endif

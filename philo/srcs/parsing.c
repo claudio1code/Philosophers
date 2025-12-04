@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 13:58:45 by clados-s          #+#    #+#             */
-/*   Updated: 2025/11/28 13:56:14 by clados-s         ###   ########.fr       */
+/*   Updated: 2025/12/04 16:52:22 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static int	ft_atou(const char *nptr)
 		return (0);
 	while (*nptr >= '0' && *nptr <= '9')
 	{
-		if (n > (INT_MAX / 10))
+		if (n > INT_MAX / 10 || (n == INT_MAX
+				/ 10 && (*nptr - '0') > INT_MAX % 10))
 			return (0);
 		n = (n * 10) + (*nptr - '0');
 		nptr++;
@@ -51,7 +52,7 @@ static int	valid_argument(int argc, char **argv)
 	return (0);
 }
 
-int	parse_arguments(int argc, char **argv, t_data *data)
+static int	error_arg(int argc, char **argv)
 {
 	if (argc < 5 || argc > 6)
 	{
@@ -60,9 +61,16 @@ int	parse_arguments(int argc, char **argv, t_data *data)
 	}
 	if (valid_argument(argc, argv))
 	{
-		printf("Error: Ivalid arguments");
+		printf("Error: Invalid arguments\n");
 		return (1);
 	}
+	return (0);
+}
+
+int	parse_arguments(int argc, char **argv, t_data *data)
+{
+	if (error_arg(argc, argv))
+		return (1);
 	data->num_philos = ft_atou(argv[1]);
 	data->time_to_die = ft_atou(argv[2]);
 	data->time_to_eat = ft_atou(argv[3]);
