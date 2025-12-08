@@ -3,6 +3,9 @@
 *.pdf
 f.c
 others/
+philo
+tester/
+objs/
 
 # Object files
 *.o

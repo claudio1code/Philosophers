@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:37:53 by clados-s          #+#    #+#             */
-/*   Updated: 2025/11/28 14:02:05 by clados-s         ###   ########.fr       */
+/*   Updated: 2025/12/08 18:06:09 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@ static void	which_philo(t_philo *p, pthread_mutex_t **f, pthread_mutex_t **s)
 	}
 }
 
-static void	handle_one_philosopher(t_philo *philo, pthread_mutex_t *fork)
-{
-	usleep(philo->data->time_to_die * 1000);
-	pthread_mutex_unlock(fork);
-}
-
 void	philo_eat(t_philo *philo)
 {
 	pthread_mutex_t	*first_fork;
@@ -42,7 +36,8 @@ void	philo_eat(t_philo *philo)
 	print_action(philo, "has taken a fork 🍴");
 	if (philo->data->num_philos == 1)
 	{
-		handle_one_philosopher(philo, first_fork);
+		usleep(philo->data->time_to_die * 1000);
+		pthread_mutex_unlock(first_fork);
 		return ;
 	}
 	pthread_mutex_lock(second_fork);
@@ -77,6 +72,7 @@ void	*philo_routine(void *arg)
 		print_action(philo, "is sleeping 💤");
 		usleep(philo->data->time_to_sleep * 1000);
 		print_action(philo, "is thinking 💭");
+		usleep();
 	}
 	return (NULL);
 }
