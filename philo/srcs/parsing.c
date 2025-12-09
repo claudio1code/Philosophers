@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 13:58:45 by clados-s          #+#    #+#             */
-/*   Updated: 2025/12/04 16:52:22 by clados-s         ###   ########.fr       */
+/*   Updated: 2025/12/09 13:56:35 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static int	ft_atou(const char *nptr)
 	n = 0;
 	if (!*nptr)
 		return (0);
+	if (*nptr == '+')
+		nptr++;
 	while (*nptr >= '0' && *nptr <= '9')
 	{
 		if (n > INT_MAX / 10 || (n == INT_MAX
@@ -39,7 +41,8 @@ static int	valid_argument(int argc, char **argv)
 	while (j < argc)
 	{
 		i = 0;
-		while (argv[j][i] == ' ' || (argv[j][i] >= 9 && argv[j][i] <= 13))
+		while (argv[j][i] == ' ' || argv[j][i] == '+'
+				|| (argv[j][i] >= 9 && argv[j][i] <= 13))
 			i++;
 		if (argv[j][i] < '0' || argv[j][i] > '9')
 			return (1);
